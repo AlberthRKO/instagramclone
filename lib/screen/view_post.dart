@@ -59,62 +59,66 @@ class ViewPost extends StatelessWidget {
     );
   }
 
-  Container _inputComment(context) {
-    return Container(
-      height: 80,
-      decoration: decoracion2(),
-      // detalles del textfield
-      child: Padding(
-        // padding a todo el input
-        padding: const EdgeInsets.all(12),
-        child: TextField(
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Colors.grey.shade300),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Colors.grey.shade400),
-              ),
-              contentPadding: EdgeInsets.all(20),
-              hintText: 'Agrega un comentario',
-              hintStyle: TextStyle(color: Colors.grey.shade400),
-              prefixIcon: Container(
-                margin: EdgeInsets.all(4),
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0, 2),
-                      blurRadius: 5,
+  Transform _inputComment(context) {
+    // transladamos el input a un campo segun el tamaño del dispositivo
+    return Transform.translate(
+      offset: Offset(0.0, -1 * MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+        height: 80,
+        decoration: decoracion2(),
+        // detalles del textfield
+        child: Padding(
+          // padding a todo el input
+          padding: const EdgeInsets.all(12),
+          child: TextField(
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.grey.shade300),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.grey.shade400),
+                ),
+                contentPadding: EdgeInsets.all(20),
+                hintText: 'Agrega un comentario',
+                hintStyle: TextStyle(color: Colors.grey.shade400),
+                prefixIcon: Container(
+                  margin: EdgeInsets.all(4),
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 2),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: _iconComment(),
+                ),
+                // Icono al lado derecho del input
+                suffixIcon: Container(
+                  margin: EdgeInsets.only(right: 4),
+                  width: 70,
+                  child: FlatButton(
+                    // creamos un rectangulo circulo
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                  ],
-                ),
-                child: _iconComment(),
-              ),
-              // Icono al lado derecho del input
-              suffixIcon: Container(
-                margin: EdgeInsets.only(right: 4),
-                width: 70,
-                child: FlatButton(
-                  // creamos un rectangulo circulo
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    color: Theme.of(context).accentColor,
+                    onPressed: () {},
+                    child: Icon(
+                      FontAwesomeIcons.paperPlane,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                   ),
-                  color: Theme.of(context).accentColor,
-                  onPressed: () {},
-                  child: Icon(
-                    FontAwesomeIcons.paperPlane,
-                    color: Colors.white,
-                    size: 25,
-                  ),
-                ),
-              )),
+                )),
+          ),
         ),
       ),
     );
